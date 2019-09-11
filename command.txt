@@ -1,0 +1,83 @@
+Kubectl
+
+Disable CSRF
+EDITOR=vim kubectl -nhq edit cm crux-config
+kubectl -nhq delete pod -l app==auth-service
+
+
+kubectl get deployments -nhq -o wide
+
+
+kubectl get deployments -nhq 
+kubectl delete deployment -nhq customer-service
+Goto orcha -> k8s/deployment/deployments/
+kubectl create -f customer-service-deployment.yaml 
+
+
+kubectl apply -f <yaml file name> 
+
+Update deployment tags
+kubctl set image <object_type>/<object_name> <container_name>=<new image to use>
+kubectl set image deployment/client-deployment client=jaejang5566/multi-client 
+
+
+
+
+
+Docker
+
+docker ps
+docker ps --all
+
+docker run  - docker create
+		   - docker start
+docker build
+
+Execute an additional command in a container—————————————
+
+docker exec -it <container id> <command>
+	-i  -> use terminal input as STDIN
+	-t -> use terminal screen as STDOUT 
+
+docker exec -it <container id> sh
+	-> full terminal access in the context of the container
+
+
+docker run -it busybody sh
+	-> starting with a shell
+
+docker exec -it <container id> npm run test
+
+Build an Image—————————————————————————
+
+docker build -t <dockerid>/<project name>:version
+docker build -t jaejang5566/redis-image:latest 
+
+docker build -it jaejang/simpleweb sh 
+	-> override initial command to sh 
+
+docker build -f Dockerfile.dev .
+	-> specify Dockerfile to run
+
+
+
+Docker Run—————————————————————
+docker run -p <local incoming port>:<container port> <image name>
+docker run -p 8080:8080 jaejang/simpleweb 
+
+docker run -t busybox sh -c "echo hi"
+	-c	-> initial command
+
+docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
+					     exclude mapping		mapping local to container map folder
+ 
+Docker Compose———————————————————————————
+
+docker-compose up
+
+docker-compose up —build
+	-> docker build . + docker run myImage
+
+docker-compose up -d (running on the backgraound)
+docker-compose down (down all containers composed)
+  
