@@ -1,4 +1,4 @@
-Kubectl
+Kubectl----------------------------------------------------------------------------------
 
 Disable CSRF
 EDITOR=vim kubectl -nhq edit cm crux-config
@@ -21,10 +21,14 @@ kubctl set image <object_type>/<object_name> <container_name>=<new image to use>
 kubectl set image deployment/client-deployment client=jaejang5566/multi-client 
 
 
+Creating a Secret
+kubectl create secret generic <secret_name> --from-literal key=value
+kubectl create secret generic pgpassword --from-literal PGPASSROD=12345asdf
 
 
 
-Docker
+
+Docker----------------------------------------------------------------------------------
 
 docker ps
 docker ps --all
@@ -70,6 +74,8 @@ docker run -t busybox sh -c "echo hi"
 
 docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
 					     exclude mapping		mapping local to container map folder
+
+docker run -it -d(running in bg) <container_id>
  
 Docker Compose———————————————————————————
 
