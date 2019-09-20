@@ -76,6 +76,9 @@ docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
 					     exclude mapping		mapping local to container map folder
 
 docker run -it -d(running in bg) <container_id>
+
+docker volume create <vol-name>
+docker run -it --mount source=<name-of-volume>,target=<path-to-directory> -d <image-name>
  
 Docker Compose———————————————————————————
 
