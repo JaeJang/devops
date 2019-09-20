@@ -25,6 +25,12 @@ Creating a Secret
 kubectl create secret generic <secret_name> --from-literal key=value
 kubectl create secret generic pgpassword --from-literal PGPASSROD=12345asdf
 
+Get image name of deployment
+kubectl get deployment/$SERVICE -nhq -o jsonpath="{..image}"
+
+Get pod name for a deployment
+kubectl get pod -nhq -l app=$SERVICE -o jsonpath="{.items[0].metadata.name}"
+
 
 
 
