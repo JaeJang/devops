@@ -25,6 +25,7 @@ Creating a Secret
 kubectl create secret generic <secret_name> --from-literal key=value
 kubectl create secret generic pgpassword --from-literal PGPASSROD=12345asdf
 
+
 Change yaml values
 kubectl -nhq patch $DEPLOYMENT --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/imagePullPolicy", "value": "IfNotPresent"}]'
 kubectl patch deployment/api --type='json' -p='[{"op":"replace","path":"/spec/template/spec/containers/0/env/0/value","value":"api-cluster-service-ip"}]'
@@ -34,6 +35,13 @@ kubectl cp [file-path] [pod-name]:/[path]
 
 kubectl config get-contexts
 kubectl config use-context CONTEXT_NAME
+
+Get image name of deployment
+kubectl get deployment/$SERVICE -nhq -o jsonpath="{..image}"
+
+Get pod name for a deployment
+kubectl get pod -nhq -l app=$SERVICE -o jsonpath="{.items[0].metadata.name}"
+
 
 
 
